@@ -5,23 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTestCard"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="teacher" Height="300" Width="300">
-    <FlowDocumentReader>
-        <FlowDocument >
-            <Paragraph Name="title" TextAlignment="Center" FontSize="18">
-                hello world
-                I am a student;
-            </Paragraph>
-            <Paragraph>
-                FlowDocument doc2 = new FlowDocument();doc2.Blocks.Add(DataTable);FlowDocument doc = doc2;
-                //(FlowDocument)XamlReader.Load(fs);            
-                XpsDocument xpsDocument = new XpsDocument("test2.xps", FileAccess.ReadWrite);            
-                XpsDocumentWriter writer = XpsDocument.CreateXpsDocumentWriter(xpsDocument);            
-                writer.Write(((IDocumentPaginatorSource)doc).DocumentPaginator);            
-                // Display the new XPS document in a viewer.
-               docViewer.Document = xpsDocument.GetFixedDocumentSequence();
-               xpsDocument.Close();
-            </Paragraph>
-        </FlowDocument>
-    </FlowDocumentReader> 
+        Title="teacher" Height="400" Width="350">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" Height="20" Background="AliceBlue" >
+            <Button Name="print" Click="print_Click">Print</Button>
+        </StackPanel>
+        <Grid >
+            <FlowDocumentScrollViewer Name="docViewer" >
+                <FlowDocument LineHeight="3" IsOptimalParagraphEnabled="True">
+                    <Paragraph  FontFamily="黑体" FontWeight="Bold" FontSize="24" TextAlignment="Center">全国硕士研究生招生考试</Paragraph>
+                    <Paragraph FontFamily="黑体" FontSize="21.3" TextAlignment="Center">2017年西华大学考点</Paragraph>
+                    <Paragraph FontFamily="黑体" FontSize="34.6" FontWeight="Bold" TextAlignment="Center">监考员证</Paragraph>
+                    <Paragraph>
+                        <Figure Height="130" HorizontalAnchor="PageCenter" WrapDirection="None">
+                            <BlockUIContainer>
+                                <Image  Source="Resource/te.jpg"></Image>
+                            </BlockUIContainer>
+                        </Figure>
+                    </Paragraph>
+                    <Paragraph></Paragraph>
+                    <Paragraph xml:space="preserve" LineHeight="1" Margin="0,4,0,0"><Grid Width="350">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label HorizontalContentAlignment="Right" FontFamily="黑体" FontSize="21.3">姓名:</Label>
+                            <Label Grid.Column="1" HorizontalContentAlignment="Left" FontFamily="华文新魏" FontSize="24">吴俊川</Label>
+                            <Label Grid.Column="2" HorizontalAlignment="Left" FontFamily="宋体" FontSize="18.7">考场号：01</Label>
+                            <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right" FontFamily="黑体" FontSize="21.3">单位:</Label>
+                            <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontFamily="宋体" FontSize="18.7">1考务室</Label>
+                        </Grid>
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </Grid>
+    </DockPanel>
 </Window>
